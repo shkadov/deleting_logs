@@ -5,11 +5,12 @@ config = ConfigParser.ConfigParser()
 config.read(file_ini)
 log_path = config.get('vars', 'log_path')
 
-def check_path(log_path):
-    try:
-        if not os.path.exists(log_path):
-            print("Path is not found")
-    except:
-        return
+class CheckPath:
+    def __init__ (self, log_path):
+        try:
+            if not os.path.exists(log_path):
+                print("Path is not found")
+        except:
+            return
 
-check_path(log_path)
+    #check_path(log_path)
