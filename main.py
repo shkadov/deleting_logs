@@ -9,6 +9,14 @@ retention = 32
 current_time = time.time()
 current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
+def check_path(logs_path):
+    try:
+        if not os.path.exists(logs_path):
+            print("Path is not found")
+    except:
+        return
+
+
 def remove_file(logs_path):
     try:
         for dir, subdir, files in os.walk(logs_path):
@@ -25,4 +33,9 @@ def remove_file(logs_path):
     except BaseException as e:
         logging.error(str(e))
 
-remove_file(logs_path)
+def main():
+    check_path(logs_path)
+    remove_file(logs_path)
+
+if __name__ == '__main__':
+    main()
